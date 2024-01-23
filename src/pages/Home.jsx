@@ -17,7 +17,7 @@ const Home = () => {
       const user = JSON.parse(localStorage.getItem("UserInfo"));
       // console.log("user",user)
       if (user) {
-        const url = "http://localhost:4000/home";
+        const url = "https://auth-be-3xd1.onrender.com/home";
         // console.log("token",user)
         const headers = {
           Authorization: user,
