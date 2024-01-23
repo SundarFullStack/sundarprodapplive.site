@@ -28,7 +28,7 @@ const Home = () => {
           .get(url, { headers })
           .then((response) => {
             // console.log(response.data.message);
-            if (response.data.message == "User Valid") {
+            if (response.data.message != "User Valid") {
               navigate("/error");
             }
           })
