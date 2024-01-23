@@ -1,66 +1,55 @@
-import React,{useEffect,useState} from 'react';
+import React, { useEffect, useState, useContext } from "react";
 import { Container, Button } from "react-bootstrap";
 import API_URL from "../../config/global";
 import axios from "axios";
+import { LoginContext } from "../components/ContextProvider";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
- 
-    const [res, setRes] = useState({});
+  const [res, setRes] = useState({});
 
-    // if (res.data) {
-    //     console.log("res",res.data.name)
-    // }
-    useEffect (() => {
-        
-        const user = JSON.parse(localStorage.getItem("UserInfo"));
+  const { loginData, setloginData } = useContext(LoginContext);
 
-        if (user && user.token) {
-            getData(user.token);
-        }
-    },[])
+  const navigate = useNavigate();
 
-     const  getData = async (token)   => {
-    
-         try {
-        
-             const config = {
-                 headers: {
-                     Authorization:token
-                 }
-             }
+  useEffect(() => {
+    setTimeout(() => {
+      const user = JSON.parse(localStorage.getItem("UserInfo"));
+      // console.log("user",user)
+      if (user) {
+        const url = "http://localhost:4000/home";
+        // console.log("token",user)
+        const headers = {
+          Authorization: user,
+          "Content-Type": "application/json",
+        };
 
-             const response = await axios.get(`${API_URL}/home`, config);
+        axios
+          .get(url, { headers })
+          .then((response) => {
+            // console.log(response.data.message);
+            if (response.data.message == "User Valid") {
+              navigate("/error");
+            }
+          })
+          .catch((error) => {
+            console.error(
+              `Error: ${error.response.status} - ${error.response.data}`
+            );
+          });
+      }
+    }, 2000);
+  }, []);
 
-            //  console.log("response",response);
-
-             if (response.data.message == "Invalid Token") {
-                 alert("Invalid Token")
-                 
-             } else if (response.data.message == "Server Busy") {
-                 alert("Server Busy")
-         }else if (response.data.message == "Token Verified successfully") {
-                 setRes(response.data);
-                //  console.log("response.data",response.data)
-                 
-             }
-        
-    } catch (error) {
-
-             console.log("error",error)
-        
-    }
-        
-    }
-    
-    return (
-        <Container>
-
-            <h1>Welcome to our Website</h1>
-            <p>We are here to serve you</p> {res.data.name}
-            <Button type="submit" variant="primary">Get Started</Button>
-
-        </Container>
-    )
-}
+  return (
+    <Container>
+      <h1>Welcome to our Website</h1>
+      {/* <p>We are here to serve you</p> {res.data.name} */}
+      <Button type="submit" variant="primary">
+        Get Started
+      </Button>
+    </Container>
+  );
+};
 
 export default Home;
