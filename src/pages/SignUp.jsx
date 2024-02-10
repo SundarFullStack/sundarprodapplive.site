@@ -12,6 +12,7 @@ const SignUp = () => {
     password: "",
   });
 
+  const navigator = useNavigate();
   //handleChange
 
   const handleChange = (e) => {
@@ -37,6 +38,8 @@ const SignUp = () => {
         if (response.data.status == 200) {
 
           alert("Registration Link Send Successfully");
+          navigator("/login")
+
 
         } else if(response.data.status == 400) {
           alert("User Already Exist")
@@ -91,8 +94,9 @@ const SignUp = () => {
               </Form.Group>
               {/* Button & Routing for Login Page */}
 
-              <Button variant="primary" type="submit">Register</Button>
-              <p>Already have an account? <Link to="login">Login</Link></p>
+        <Button variant="primary" type="submit">Register</Button>
+        
+              <h6>Already have an account? <Link to="login">Login</Link></h6>
 
       </Form>
     </Container>

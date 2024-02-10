@@ -23,23 +23,35 @@ const Login = () => {
 
   //handleSubmit
 
+
+
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    try {
+      e.preventDefault();
 
-    // console.log(formData)
+    
+    if (formData) {
+      // console.log(formData);
+      const response = await axios.post(`${API_URL}/login`, formData);
+      // console.log("response", response.data.message)
+      
+      if (response.data.message == "Invalid Username or password") {
+        alert("Invalid Username or password")
+      } else if (response.data.message == "User Authenticated Successfully!!") {
+        localStorage.setItem("UserInfo", JSON.stringify(response.data.token));
+        navigate("/layout");
+        window.location.reload();
+      }else{
+        console.log(response.data.message)
+      }
+}
+    
 
-    const response = await axios.post(`${API_URL}/login`, formData);
-    // console.log("response", response);
-    // console.log("response.token", response.data.token);
-
-    if (response.data.message === "Invalid Username or password") {
-      alert("Invalid Username or password");
-    } else if (response.data.message === "Server Busy") {
-      alert("Server Busy");
-    } else if (response.data.message === "User Authenticated Successfully!!") {
-      localStorage.setItem("UserInfo", JSON.stringify(response.data.token));
-      navigate("/home");
-    }
+    } catch (error) {
+      console.log("Error",error)
+   }
+   
+   
   };
 
   return (
@@ -73,7 +85,6 @@ const Login = () => {
         <Button variant="primary" type="submit">
           Login
         </Button>
-        {/* <p>Already have an account?</p> <Link to="login">Login</Link> */}
       </Form>
     </Container>
   );

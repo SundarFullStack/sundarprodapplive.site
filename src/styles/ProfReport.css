@@ -1,0 +1,130 @@
+#ProfileReportS{
+    font-weight: 400;
+    font-size: 18px;
+    margin: 30px 22px;
+    margin-left: 250px;
+    padding: 20px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+#ProfileReportB{
+    font-weight: 400;
+    font-size: 18px;
+    margin: 30px 22px;
+    margin-left: 115px;
+    padding: 20px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.profReport-content p{
+    padding: 2px;
+    border-bottom: 3px solid grey;
+    border-radius:8px;
+    color: black;
+}
+
+  /* dropdown container */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  /* dropdown button */
+  #PRdropdownSelect {
+    margin-top: 20px;
+    margin-left: 9px;
+    height: 41px;
+    width: 280px;
+    padding: 10px;
+    background-color: #e8edf1;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  
+
+ 
+
+  #PRSearchbutton:hover{
+    background-color:white;
+    color:#1e1e2c;
+    border-color:#1e1e2c;
+   
+
+  }
+
+  #PRSearchbutton{
+    margin:5px;
+    display:inline-block;
+    padding:5px 20px;
+    border-radius:7px;
+    text-align:center;
+    font-weight:bold;
+    font-size:16px;
+    cursor:pointer;
+    border-color: white;
+    color: white;
+    background-color: #1e1e2c;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+  }
+
+  #PRClearbutton:hover{
+    background-color:#1e1e2c;
+    color:white;
+    border-color:white;
+   
+
+  }
+
+  #PRClearbutton{
+    margin:5px;
+    display:inline-block;
+    padding:5px 20px;
+    border-radius:7px;
+    text-align:center;
+    font-weight:bold;
+    font-size:16px;
+    cursor:pointer;
+    border-color: #1e1e2c;
+    color: #1e1e2c;
+    background-color: white;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+  }
+
+  /* Table */
+
+  /* TableWithResponsiveStyles.css */
+.table-responsive {
+  overflow-x: auto; /* Enable horizontal scrolling on small screens */
+}
+
+/* Optional: Add custom styles for table cells on small screens */
+@media (max-width: 767px) {
+  .table td,
+  .table th {
+    white-space: nowrap; /* Prevent text wrapping */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Display ellipsis (...) for overflowed text */
+  }
+}
+
+.page-link{
+  color:#1e1e2c;
+}
+.searchFilter{
+display:flex;
+justify-content:right;
+margin-bottom:10px;
+
+}
+
+.datatable{
+  font-weight: 400;
+  font-size: 18px;
+  margin: 30px 22px;
+  margin-left: 0px;
+  padding: 20px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}

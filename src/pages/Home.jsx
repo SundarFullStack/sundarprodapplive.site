@@ -5,46 +5,16 @@ import axios from "axios";
 import { LoginContext } from "../components/ContextProvider";
 import { useNavigate } from "react-router-dom";
 
+
 const Home = () => {
-  const [res, setRes] = useState({});
-
-  const { loginData, setloginData } = useContext(LoginContext);
-
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    setTimeout(() => {
-      const user = JSON.parse(localStorage.getItem("UserInfo"));
-      // console.log("user",user)
-      if (user) {
-        const url = "https://auth-be-3xd1.onrender.com/home";
-        // console.log("token",user)
-        const headers = {
-          Authorization: user,
-          "Content-Type": "application/json",
-        };
-
-        axios
-          .get(url, { headers })
-          .then((response) => {
-            // console.log(response.data.message);
-            if (response.data.message != "User Valid") {
-              navigate("/error");
-            }
-          })
-          .catch((error) => {
-            console.error(
-              `Error: ${error.response.status} - ${error.response.data}`
-            );
-          });
-      }
-    }, 2000);
-  }, []);
+ 
+  const { loginData, setLoginData } = useContext(LoginContext);
 
   return (
-    <Container>
+    <Container style={{width:"400px"}}>
       <h1>Welcome to our Website</h1>
-      {/* <p>We are here to serve you</p> {res.data.name} */}
+      <p style={{ color: "black" }}>We are here to serve you... </p> 
+      <h4 className="text-center"style={{color:"grey",marginBottom:"20px"}}>{loginData}</h4>
       <Button type="submit" variant="primary">
         Get Started
       </Button>
