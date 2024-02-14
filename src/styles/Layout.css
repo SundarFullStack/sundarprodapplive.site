@@ -2,12 +2,14 @@
 /* SideBar */
 .sidebar-section{
     display:flex;
+    
     /* background-Color:black */
 }
 
 .sidebar{
-    height:100vh;
-    width:80px;
+    overflow-y: auto;
+    height: 100%;
+    width:70px;
     position:fixed;
     background-color:#1e1e2c;
 }
@@ -37,9 +39,18 @@
 }
 /* Mobile View */
 
-@media (max-width:600px){
+@media (max-width:400px){
     .sidebar{
-        display:none;
+        display:block;
+    }
+    .sidebar{
+        display:block;
+        /* height: 560px; */
+
+    }
+    .sidebar-toggle{
+        overflow-x: auto;
     }
 }
+
 

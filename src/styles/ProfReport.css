@@ -128,3 +128,35 @@ margin-bottom:10px;
   padding: 20px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
+
+@media (max-width:400px){
+
+  #ProfileReportS{
+    font-weight: 400;
+    font-size: 18px;
+    margin: 9px 5px 0px 5px;
+    margin-left: 79px;
+    padding: 20px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    position: relative;
+    z-index: -1;
+  }
+  #ProfileReportB{
+    font-weight: 400;
+    font-size: 18px;
+    margin: 30px 7px;
+    margin-left: 79px;
+    padding: 20px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+
+  #PRdropdownSelect{
+    width:200px !important;
+  }
+  .searchFilter{
+    width:180px !important;
+  }
+  .loRLRp,.cpKGXa,.gOZhZv,.icPZuM{
+    width:200px !important;
+  }
+}

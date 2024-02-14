@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import "../styles/ProfQuality.css";
+import React, { useState, useEffect, useRef } from "react";
+import "../styles/ProfProd.css";
 import { AiOutlineIssuesClose } from "react-icons/ai";
 import { useMyContext } from "../components/ContextProvider";
 import DateTimePicker from "react-datepicker";
@@ -8,6 +8,11 @@ import styled from "styled-components";
 import API_URL from "../../config/global";
 import axios from "axios";
 import Popup from "./Popup";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+
+
 
 function StoreIssue({ toggle }) {
   // Get Data from DB using Context for Dropdowns
@@ -16,27 +21,33 @@ function StoreIssue({ toggle }) {
   let { StoreInCharge = [] } = useMyContext();
   let { StorePallets = [] } = useMyContext();
   let { StoreLocation = [] } = useMyContext();
-  let { selectedRows,setSelectedRows} = useMyContext();
-  let { selectedId,setSelectedId} = useMyContext();
+  let { selectedRows = [],setSelectedRows } = useMyContext();
+  let { selectedId, setSelectedId } = useMyContext();
   let { PopupCode, setPopupCode } = useMyContext();
   let [shift, setShift] = useState(["shiftA", "shiftB", "shiftC"]);
 
   //Local State Storage
 
-  let [selectProfileCode, setselectProfileCode] = useState(null);
-  let [selectProdQuantity, setselectProdQuantity] = useState(null);
-  let [selectLocation, setSelectLocation] = useState(null);
-  let [selectPalletNo, setSelectPalletNo] = useState(null);
-  let [selectInCharge, setSelectInCharge] = useState(null);
-  let [selectShift, setselectShift] = useState(null);
+  let [searchProfileCode, setsearchProfileCode] = useState(undefined);
+  let [selectProfileCode, setselectProfileCode] = useState(undefined);
+  let [selectProdQuantity, setselectProdQuantity] = useState(undefined);
+  let [selectLocation, setSelectLocation] = useState(undefined);
+  let [selectPalletNo, setSelectPalletNo] = useState(undefined);
+  let [selectInCharge, setSelectInCharge] = useState(undefined);
+  let [selectShift, setselectShift] = useState(undefined);
   let [SelectedConsumeDate, setSelectedConsumeDate] = useState(new Date());
 
-    // console.log("selectedRows",selectedRows[0].ProfileCode)
+  console.log("selectedId",selectedId)
 
   //Handle Profile Code
 
   const handleSelectProfileCode = (event) => {
     setselectProfileCode(event.target.value);
+  };
+  //Handle search Profile Code
+
+  const handleSearchProfileCode = (event) => {
+    setsearchProfileCode(event.target.value);
   };
 
   //Handle Production  shift
@@ -69,47 +80,54 @@ function StoreIssue({ toggle }) {
 
   //HandleSave
 
+ 
+
   const handleSave = async () => {
     try {
-      if (
-        !selectProfileCode ||
+      if (!selectProfileCode ||
         !selectProdQuantity ||
         !selectLocation ||
-        !selectPalletNo ||
         !selectInCharge ||
         !selectPalletNo ||
-        !SelectedConsumeDate
+        !SelectedConsumeDate ||
+        !selectShift
       ) {
+        console.log(selectProfileCode,
+          selectProdQuantity,
+          selectLocation,
+          selectPalletNo,
+          selectInCharge,
+          selectShift,
+          SelectedConsumeDate)
         alert("Please Ensure to Provide All Fields!!!");
+         
       } else {
-        // console.log("selectProfileCode", selectProfileCode);
-        // console.log("selectProdQuantity", selectProdQuantity);
-        // console.log("selectLocation", selectLocation);
-        // console.log("selectPalletNo", selectPalletNo);
-        // console.log("selectInCharge", selectInCharge);
-        // console.log("selectShift", selectShift);
-        // console.log("SelectedConsumeDate", SelectedConsumeDate);
-
-        const res = await axios.put(`${API_URL}/profIssue/update/${selectedId}`, {
-          ProfileCode: selectProfileCode,
-          qty: selectProdQuantity,
-          PalletNo: selectPalletNo,
-          updatedBy: selectInCharge,
-          Shift: selectShift,
-          updatedDate: SelectedConsumeDate,
-          Location: selectLocation,
-        });
+        console.log(selectProfileCode,
+          selectProdQuantity,
+          selectLocation,
+          selectPalletNo,
+          selectInCharge,
+          selectShift,
+          SelectedConsumeDate)
+        const res = await axios.put(
+          `${API_URL}/profIssue/update/${selectedId}`,
+          {
+            ProfileCode: selectProfileCode,
+            qty: selectProdQuantity,
+            PalletNo: selectPalletNo,
+            updatedBy: selectInCharge,
+            Shift: selectShift,
+            updatedDate: SelectedConsumeDate,
+            Location: selectLocation,
+          }
+        );
         // console.log("res", res.data.message);
         if (res.data.message == "Store Details updated Successfully") {
-          alert(res.data.message);
-          setselectProfileCode(null);
-          setselectProdQuantity(null);
-          setSelectLocation(null);
-          setSelectPalletNo(null);
-          setSelectInCharge(null);
-          setselectShift(null);
-          SelectedConsumeDate(new Date());
-        } else if(res.data.message == "Error In Updating Store Details"){
+          alert("Profile Issue Details Updated Successfully");
+          setTimeout(() => {
+            handleClear()
+        },2000)
+        } else if (res.data.message == "Error In Updating Store Details") {
           alert(res.data.message);
         }
       }
@@ -118,41 +136,78 @@ function StoreIssue({ toggle }) {
     }
   };
 
+  //Handle Clear
+
+  const handleClear = () => {
+    setselectProfileCode(undefined);
+    setselectProdQuantity(undefined);
+    setSelectLocation(undefined);
+    setSelectPalletNo(undefined);
+    setSelectInCharge(undefined);
+    setselectShift(undefined);
+    setSelectedConsumeDate(new Date());
+  };
+
   //Open popup Handling
 
   const [isPopupOpen, setPopupOpen] = useState(false);
 
+  // console.log("selectProfileCode",selectProfileCode)
+  // console.log("searchProfileCode",searchProfileCode)
+
+  // FOR OPEN POPUP OPERATIONS
+
   const openPopup = () => {
-    setPopupOpen(true);
-    setPopupCode(selectProfileCode);
+    if (searchProfileCode != undefined) {
+      handleClear()
+      setPopupOpen(true);
+      setPopupCode(searchProfileCode);
+    } else {
+      toast.error("Please Provide Profile Code");
+    }
   };
+
+  // FOR CLOSE POPUP OPERATION
 
   const closePopup = () => {
     setPopupOpen(false);
+ 
   };
 
-  //DateTime Picker styles
+    //DateTime Picker styles
 
   const StyledDatePicker = styled(DateTimePicker)`
-    margin-top: 20px;
-    margin-left: 9px;
-    height: 40px;
-    width: 280px;
-    padding: 10px;
-    background-color: #e8edf1;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    /* Add more styles as needed */
-  `;
+  margin-top: 20px;
+  margin-left: 9px;
+  height: 40px;
+  width: 280px;
+  padding: 10px;
+  background-color: #e8edf1;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  /* Add more styles as needed */
+`;
+
+  useEffect(() => {
+    if (selectedRows.length > 0) {
+      setselectProfileCode(selectedRows[0].ProfileCode);
+      setselectProdQuantity(selectedRows[0].Quantity);
+      setSelectLocation(selectedRows[0].Location);
+      setSelectPalletNo(selectedRows[0].PalletNo);
+      setSelectInCharge(selectedRows[0].ConsumedBy);
+    }
+  },[selectedRows])
 
   return (
     <>
+       <ToastContainer />
       {/* Profile Searching Card */}
       <div
-        className="ProfileQuality"
-        id={toggle ? "ProfileQualityS" : "ProfileQualityB"}
+        className="ProfileProduction"
+        id={toggle ? "ProfileProductionS" : "ProfileProductionB"}
       >
+          
         <div className="row">
           <div className="col-md-12 col-xl-12 col-lg-12 col-xs-12">
             <div className="prof-content">
@@ -167,8 +222,9 @@ function StoreIssue({ toggle }) {
                   <select
                     id="dropdownSelect"
                     multiple={false}
-                    onChange={handleSelectProfileCode}
-                    value={selectProfileCode || ""}
+                    onChange={handleSearchProfileCode}
+                    value={searchProfileCode || ""}
+                    required
                   >
                     <option value="" disabled>
                       Select an option
@@ -186,6 +242,8 @@ function StoreIssue({ toggle }) {
                     Search
                   </button>
                 </div>
+                {/* Popup For Store Report profile Selection */}
+
                 <Popup isOpen={isPopupOpen} onRequestClose={closePopup} />
               </div>
             </div>
@@ -194,21 +252,21 @@ function StoreIssue({ toggle }) {
       </div>
       {/* Profile Issuing Card */}
       <div
-        className="ProfileQuality"
-        id={toggle ? "ProfileQualityS" : "ProfileQualityB"}
+        className="ProfileProduction"
+        id={toggle ? "ProfileProductionS" : "ProfileProductionB"}
       >
         <div className="row">
           <div className="col-md-12 col-xl-12 col-lg-12 col-xs-12">
             <div className="prof-content">
-              <div className="row" style={{ marginTOp: "40px" }}>
+              <div className="row" style={{ marginTop: "40px" }}>
                 {/* Profile Code */}
                 <div className="col-md-12 col-xl-4 col-lg-4 col-xs-12">
                   Profile Code:
                   <select
                     id="dropdownSelect"
-                    multiple={false}
+                    // multiple={false}
                     onChange={handleSelectProfileCode}
-                    value={selectProfileCode || "selectedRows.ProfileCode"}
+                    value={selectProfileCode|| ""}
                   >
                     <option value="" disabled>
                       Select an option
@@ -247,7 +305,7 @@ function StoreIssue({ toggle }) {
                       className="dropdown-btn"
                       type="number"
                       placeholder="Eg: 100"
-                      value={selectProdQuantity}
+                      value={selectProdQuantity || ""}
                       onChange={handleselectQuantiy}
                     />
                   </div>
@@ -261,7 +319,7 @@ function StoreIssue({ toggle }) {
                     id="dropdownSelect"
                     multiple={false}
                     onChange={handleSelectLocation}
-                    value={selectLocation || ""}
+                    value={selectLocation|| ""}
                   >
                     <option value="" disabled>
                       Select an Location
@@ -280,7 +338,7 @@ function StoreIssue({ toggle }) {
                     id="dropdownSelect"
                     multiple={false}
                     onChange={handleSelectPalletNo}
-                    value={selectPalletNo || ""}
+                    value={selectPalletNo|| ""}
                   >
                     <option value="" disabled>
                       Select an Pallet No
@@ -300,7 +358,7 @@ function StoreIssue({ toggle }) {
                     id="dropdownSelect"
                     onChange={handleSelectInCharge}
                     multiple={false}
-                    value={ selectInCharge|| ""}
+                    value={selectInCharge|| ""}
                   >
                     <option value="" disabled>
                       Select an Option
@@ -337,14 +395,22 @@ function StoreIssue({ toggle }) {
               </div>
               <div className="row" style={{ marginTop: "45px" }}>
                 <div className="col-md-8"></div>
-
+                {/* Save button */}
                 <div className="col-6 col-md-4">
                   <button
                     type="button"
                     id="button"
-                    onClick={() => handleSave()}
+                    onClick={handleSave}
                   >
                     Save
+                  </button>
+                  {/* Clear button */}
+                  <button
+                    type="button"
+                    id="Clearbutton"
+                    onClick={() => handleClear()}
+                  >
+                    Clear
                   </button>
                 </div>
               </div>
@@ -352,6 +418,7 @@ function StoreIssue({ toggle }) {
           </div>
         </div>
       </div>
+   
     </>
   );
 }

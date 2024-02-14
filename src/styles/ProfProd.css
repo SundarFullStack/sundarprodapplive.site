@@ -27,6 +27,7 @@
     position: relative;
     display: inline-block;
   }
+  
 
   /* dropdown button */
   #dropdownSelect {
@@ -67,3 +68,50 @@
     box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
     transition: background-color 0.3s, color 0.3s, border-color 0.3s;
   }
+  
+  #Clearbutton{
+    margin:18px;
+    display:inline-block;
+    padding:5px 20px;
+    border-radius:7px;
+    text-align:center;
+    font-weight:bold;
+    font-size:16px;
+    cursor:pointer;
+    border-color: #1e1e2c;
+    color: #1e1e2c;
+    background-color: white;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+  }
+
+  @media (max-width:400px){
+    #ProfileProductionS{
+    font-weight: 400;
+    font-size: 16px;
+    margin: 9px 5px 0px 5px;
+    margin-left: 80px;
+    padding: 11px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    position: absolute;
+    z-index: -1;
+  }
+  #ProfileProductionB{
+    font-weight: 400;
+    font-size: 16px;
+    margin: 9px 5px 0px 5px;
+    margin-left: 80px;
+    padding: 11px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+#dropdownSelect{
+  width:200px !important;
+}
+.input{
+  width:200px !important
+}
+
+.iSVJEM,.hXIFoN,.EFsqe,.ihrNNV{
+  width:200px !important;
+}
+}

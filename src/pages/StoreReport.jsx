@@ -10,6 +10,8 @@ import axios from "axios";
 import Table from "react-bootstrap/Table";
 import { format } from "date-fns";
 import  DataTable  from "react-data-table-component";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const customStyles = {
   headRow: {
@@ -68,16 +70,6 @@ const customStyles = {
        sortable:true
     },
     {
-      name:"Quantity",
-       selector:row=>row.Quantity,
-       sortable:true
-    },
-    {
-      name:"Consumed By",
-       selector:row=>row.ConsumedBy,
-       sortable:true
-    },
-    {
       name:"Consumed Quantity",
        selector:row=>row.ConsumedQty,
        sortable:true
@@ -85,6 +77,17 @@ const customStyles = {
     {
       name:"Issued Quantity",
        selector:row=>row.IssuedQty,
+       sortable:true
+    },
+    {
+      name:"Currrent Quantity",
+       selector:row=>row.Quantity,
+       sortable:true
+    },
+    
+    {
+      name:"Consumed By",
+       selector:row=>row.ConsumedBy,
        sortable:true
     },
     {
@@ -129,7 +132,7 @@ function StoreReport({ toggle }) {
   const handleSearch = async () => {
     try {
       if (!selectProfileCode || !SelectedStartDate || !SelectedEndDate) {
-        alert("Please Ensure to Provide All Fields!!!");
+        toast.error("Please Ensure to Provide All Fields!!!");
       } else {
         const res = await axios.post(`${API_URL}/profStore/report`, {
           ProfileCode: selectProfileCode,
@@ -139,10 +142,10 @@ function StoreReport({ toggle }) {
         // console.log("res", res.data.report);
 
         if (!res.data.report.length>0) {
-        alert("No Report Found On THis Code")
+        toast.error("No Report Found On THis Code")
         } 
         else {
-          alert("Store Report Fetched Successfully!!");
+          toast.success("Store Report Fetched Successfully!!");
           setProdReport(res.data.report);
         }
       }
@@ -176,6 +179,7 @@ function StoreReport({ toggle }) {
 const filteredData = prodReport.filter(filterData);
   return (
     <>
+     <ToastContainer />
       {/* Header Card */}
     <div
       className="ProfileReport"

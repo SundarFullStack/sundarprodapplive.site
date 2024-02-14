@@ -3,9 +3,9 @@
     max-width:400px;
     margin:50px auto;
     padding:20px;
-    background-color:#f7f7f7;
+    background-color:#fff;
     border-radius:5px;
-    box-shadow:opx opx 10px rgba(0,0,0,0.2)
+    box-shadow:rgba(0, 0, 0, 0.35) 0px 5px 15px;
   
     
 }
@@ -27,8 +27,21 @@ label{
 
 .btn-primary{
     width:100%;
-    color:#fff7;
+    color:white;
+    background-color:#1e1e2c;
     border:none;
-    background-color:blue;
-
 }
+
+.btn-primary:hover{
+    background-color:#5c5c6d;
+}
+a{
+    text-decoration:none;
+}
+
+@media (max-width:400px){
+    .container{
+        width:300px !important;
+    }
+}
+

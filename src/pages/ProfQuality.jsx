@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../styles/ProfQuality.css";
+import "../styles/ProfProd.css";
 import { MdBookmarkAdded } from "react-icons/md";
 import { useMyContext } from "../components/ContextProvider";
 import DateTimePicker from "react-datepicker";
@@ -7,10 +7,15 @@ import "react-datepicker/dist/react-datepicker.css";
 import styled from "styled-components";
 import API_URL from "../../config/global";
 import axios from "axios";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+// QUALITY COMPONENT FOR PROVIDE AND SAVE QUALTITY
 
 function ProfQuality({ toggle }) {
 
   // Get Data from DB using Context for Dropdowns
+
   let { profileProdData = [] } = useMyContext();
   let { QualityReason = [] } = useMyContext();
   let { QualityInCharge = [] } = useMyContext();
@@ -19,7 +24,7 @@ function ProfQuality({ toggle }) {
   let [status, setStatus] = useState(["Hold","Pending", "Approved"]);
   let [shift, setShift] = useState(["shiftA", "shiftB", "shiftC"]);
 
-  //Local State Storage
+  //LOCAL STATE STORAGE
 
   let [selectProfileCode, setselectProfileCode] = useState(null);
   let [selectProdQuantity, setselectProdQuantity] = useState(null);
@@ -32,45 +37,45 @@ function ProfQuality({ toggle }) {
   let [SelectedHoldDate, setSelectedHoldDate] = useState(new Date());
 
   
-  //Handle Profile Code
+  //HANDLING CHANGES HAPPEN ON  Profile Code INPUT FIELD
 
   const handleSelectProfileCode = (event) => {
     setselectProfileCode(event.target.value);
   };
 
-  //Handle Production  shift
+   //HANDLING CHANGES HAPPEN ON  PRODUCTION SHIFT  INPUT FIELD
 
   const handleselectShift = (event) => {
     setselectShift(event.target.value);
   };
 
-//Hold Profile Location
+  //HANDLING CHANGES HAPPEN ON  QUALITY LOCATION  INPUT FIELD
 
   const handleSelectLocation = (event) => {
     setSelectLocation(event.target.value);
   };
-//Hold Pallet No
+  //HANDLING CHANGES HAPPEN ON  PALLET NO INPUT FIELD
 
   const handleSelectPalletNo = (event) => {
     setSelectPalletNo(event.target.value);
   };
-//Hold In-charge
+  //HANDLING CHANGES HAPPEN ON  SHIFT IN-CHARGE  INPUT FIELD
 
   const handleSelectInCharge = (event) => {
     setSelectInCharge(event.target.value);
   };
-//Hold Reason
+  //HANDLING CHANGES HAPPEN ON  QUALITY REASON INPUT FIELD
 
   const handleSelectReason = (event) => {
     setSelectReason(event.target.value);
   };
-//Hold Status
+  //HANDLING CHANGES HAPPEN ON  PROFIULE STATUS INPUT FIELD
 
   const handleStatus = (event) => {
     setselectStatus(event.target.value);
   };
 
-  //Handle Quantity
+  //HANDLING CHANGES HAPPEN ON QUANTITY INPUT FIELD
 
   const handleselectQuantiy = (event) => {
     setselectProdQuantity(event.target.value)
@@ -78,8 +83,8 @@ function ProfQuality({ toggle }) {
 
 
 
-  //HandleSave
-
+  // API FOR POST AND SAVING QUALITY DETAILS IN QUALITY COLLECTION AND HANDLING RESPONSE
+  
   const handleSave = async () => {
     try {
       if (
@@ -93,19 +98,9 @@ function ProfQuality({ toggle }) {
         !selectReason ||
         !SelectedHoldDate 
       ) {
-        alert("Please Ensure to Provide All Fields!!!");
+        toast.error("Please Ensure to Provide All Fields!!!");
       } else {
-       
-console.log('selectProfileCode',selectProfileCode)
-console.log('selectProdQuantity',selectProdQuantity)
-console.log('selectLocation',selectLocation)
-console.log('selectPalletNo',selectPalletNo)
-console.log('selectInCharge',selectInCharge)
-console.log('selectShift',selectShift)
-console.log('selectStatus',selectStatus)
-console.log('selectReason',selectReason)
-console.log('SelectedHoldDate',SelectedHoldDate)
-        
+
         const res = await axios.post(`${API_URL}/profQuality`, {
           ProfileCode:selectProfileCode,
           Quantity:selectProdQuantity,
@@ -117,26 +112,44 @@ console.log('SelectedHoldDate',SelectedHoldDate)
           HoldedDate:SelectedHoldDate,
           Location:selectLocation
         });
-        console.log("res", res.data.message)
+        // console.log("res", res.data.message)
         if (res.data.message == "Quality Data Saved Successfully!!") {
-          alert(res.data.message);
-          setselectProfileCode(null);
-          setselectProdQuantity(null);
-          setSelectLocation(null);
-          setSelectPalletNo(null);
-          setSelectInCharge(null);
-          setselectShift(null);
-          setselectStatus(null);
-          setSelectReason(null);
-          setSelectedHoldDate(new Date());
+          toast.success(res.data.message);
+         
+          setTimeout(() => {
+            setselectProfileCode(null);
+            setselectProdQuantity(null);
+            setSelectLocation(null);
+            setSelectPalletNo(null);
+            setSelectInCharge(null);
+            setselectShift(null);
+            setselectStatus(null);
+            setSelectReason(null);
+            setSelectedHoldDate(new Date());
+          }, 2500)
+          
              }else {
-              alert(res.data.message)
+              toast.error(res.data.message)
              }
        
       }
     } catch (error) {
       console.log("error", error);
     }
+  };
+
+    //HANDLING CLEAR BUTTON FUNCTIONALITY
+
+    const handleClear = () => {
+      setselectProfileCode(null);
+      setselectProdQuantity(null);
+      setSelectLocation(null);
+      setSelectPalletNo(null);
+      setSelectInCharge(null);
+      setselectShift(null);
+      setselectStatus(null);
+      setSelectReason(null);
+      setSelectedHoldDate(new Date());
   };
 
   //DateTime Picker styles
@@ -155,10 +168,13 @@ console.log('SelectedHoldDate',SelectedHoldDate)
   `;
 
   return (
+    <> 
+    <ToastContainer />
     <div
-      className="ProfileQuality"
-      id={toggle ? "ProfileQualityS" : "ProfileQualityB"}
+      className="ProfileProduction"
+      id={toggle ? "ProfileProductionS" : "ProfileProductionB"}
     >
+       
       <div className="row">
         <div className="col-md-12 col-xl-12 col-lg-12 col-xs-12">
           <div className="prof-content">
@@ -352,15 +368,24 @@ console.log('SelectedHoldDate',SelectedHoldDate)
 
               <div className="row" style={{ marginTop: "45px" }}>
                 <div className="col-md-8"></div>
-
-                <div className="col-6 col-md-4">
+                {/* BUTTONS */}
+                  <div className="col-6 col-md-4">
+                    {/* SAVE BUTTON */}
                   <button
                     type="button"
                     id="button"
                     onClick={() => handleSave()}
                   >
                     Save
-                  </button>
+                    </button>
+                    {/* CLEAR BUTTON */}
+                  <button
+                  type="button"
+                  id="Clearbutton"
+                  onClick={() => handleClear()}
+                >
+                  Clear
+                </button>
                 </div>
               </div>
             </div>
@@ -368,6 +393,7 @@ console.log('SelectedHoldDate',SelectedHoldDate)
         </div>
       </div>
     </div>
+    </>
   );
 }
 
