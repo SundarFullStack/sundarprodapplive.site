@@ -15,7 +15,7 @@ const Home = () => {
   // TOASTIFY ALERT CREATER ON CLICKING GET STARTED BUTTON
 
   const notify = () => toast.success("Hello, Get Start with Production Page");
-console.log("API_URL",API_URL)
+// console.log("API_URL",API_URL)
   return (
 
       <div className="row">
