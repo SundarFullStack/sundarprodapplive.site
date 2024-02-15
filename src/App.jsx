@@ -13,6 +13,7 @@ import Data from "../src/components/Data";
 import ForgotPassword from "./pages/ForgotPassword";
 import FPUpdate from "./pages/FPUpdate";
 
+
 function App() {
   const [data, setData] = useState(false);
 
@@ -26,7 +27,7 @@ function App() {
     const user = JSON.parse(localStorage.getItem("UserInfo"));
 
     if (user) {
-      const url = "http://localhost:4000/home";
+      const url = "http://ec2-54-235-18-138.compute-1.amazonaws.com:8080/home";
       const headers = {
         Authorization: user,
         "Content-Type": "application/json",
