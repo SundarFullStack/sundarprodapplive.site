@@ -1,5 +1,4 @@
 {
-  "homepage":"http://SundarFullStack.github.io/ProductionApp_FrontEnd",
   "name": "vite-project",
   "private": true,
   "version": "0.0.0",
@@ -7,8 +6,6 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "predeploy":"npm run build",
-    "deploy":"gh-pages -d dist",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
@@ -52,3 +49,4 @@
     "vite": "^5.0.12"
   }
 }
+
