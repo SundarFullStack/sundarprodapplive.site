@@ -27,7 +27,7 @@ function App() {
     const user = JSON.parse(localStorage.getItem("UserInfo"));
 
     if (user) {
-      const url = "http://ec2-3-92-233-73.compute-1.amazonaws.com:6050/home";
+      const url = "https://production-backend-server-com.onrender.com/home";
       const headers = {
         Authorization: user,
         "Content-Type": "application/json",
