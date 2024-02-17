@@ -1,9 +1,6 @@
-import React, { useEffect, useState, useContext } from "react";
-import { Container, Button } from "react-bootstrap";
-import API_URL from "../../config/global";
-import axios from "axios";
+import React, { useContext } from "react";
+import { Button } from "react-bootstrap";
 import { LoginContext } from "../components/ContextProvider";
-import { useNavigate } from "react-router-dom";
 import "../styles/Home.css"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';

@@ -102,13 +102,13 @@ function StoreIssue({ toggle }) {
         alert("Please Ensure to Provide All Fields!!!");
          
       } else {
-        console.log(selectProfileCode,
-          selectProdQuantity,
-          selectLocation,
-          selectPalletNo,
-          selectInCharge,
-          selectShift,
-          SelectedConsumeDate)
+        // console.log(selectProfileCode,
+        //   selectProdQuantity,
+        //   selectLocation,
+        //   selectPalletNo,
+        //   selectInCharge,
+        //   selectShift,
+        //   SelectedConsumeDate)
         const res = await axios.put(
           `${API_URL}/profIssue/update/${selectedId}`,
           {
@@ -186,7 +186,6 @@ function StoreIssue({ toggle }) {
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  /* Add more styles as needed */
 `;
 
   useEffect(() => {

@@ -47,7 +47,6 @@ const StyledDatePicker = styled(DateTimePicker)`
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  /* Add more styles as needed */
 `;
 
 // REPORT FOR DISPLAYING PRODUCTION DETAILS IN TABLE

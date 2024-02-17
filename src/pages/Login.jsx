@@ -96,7 +96,7 @@ const Login = () => {
             Not Registered User? <Link to="/">Registration Page</Link>
           </h6>
           <h6 style={{ textAlign: "center", marginTop: "15px" }}>
-            Forgot Password ? <Link to="https://monumental-kelpie-1d6db5.netlify.app/layout/ForgotPassword">Forgot Password</Link>
+            Forgot Password ? <Link to="/ForgotPassword">Forgot Password</Link>
           </h6>
         </Form>
       </Container>

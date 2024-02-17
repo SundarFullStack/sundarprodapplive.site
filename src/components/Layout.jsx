@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState } from "react";
 import "../styles/Layout.css";
 import { Routes, Route } from "react-router-dom";
 import { TbLayoutSidebarRightExpandFilled } from "react-icons/tb";
@@ -12,7 +12,6 @@ import ProfReport from "../pages/ProfReport";
 import QualityReport from "../pages/QualityReport";
 import StoreReport from "../pages/StoreReport";
 import StoreIssue from "../pages/StoreIssue";
-import { LoginContext } from "../components/ContextProvider";
 import Header from "../pages/Header";
 
 // LAYOUT COMPONENT IS USED TO CREATE AN STATIC LAYOUT SIDEBAR WITH MENUS

@@ -1,5 +1,5 @@
 {
-  "homepage": "http://SundarFullStack.github.io/production.app.com",
+  "homepage": "https://SundarFullStack.github.io/production.app.com/",
   "name": "vite-project",
   "private": true,
   "version": "0.0.0",
@@ -7,8 +7,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist",
+    "predeploy":"npm run build",
+    "deploy":"gh-pages -d dist",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
@@ -22,7 +22,6 @@
     "axios": "^1.6.2",
     "bootstrap": "^5.3.2",
     "date-fns": "^3.3.1",
-    "gh-pages": "^6.1.1",
     "react": "^18.2.0",
     "react-bootstrap": "^2.9.1",
     "react-data-table-component": "^7.6.2",
@@ -49,7 +48,7 @@
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
+    "gh-pages": "^6.1.1",
     "vite": "^5.0.12"
   }
 }
-

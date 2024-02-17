@@ -46,7 +46,6 @@ const customStyles = {
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    /* Add more styles as needed */
   `;
 
 

@@ -1,5 +1,4 @@
 import { useState, useContext, useEffect } from "react";
-import "./App.css";
 import axios from "axios";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
@@ -114,9 +113,3 @@ function App() {
 
 export default App;
 
-//   < ProfProd />
-// <ProfStore/>
-// <ProfQuality/>
-// <ProfReport/>
-// <QualityReport />
-//<StoreReport/>

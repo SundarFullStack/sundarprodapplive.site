@@ -2,8 +2,6 @@ import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/Header.css";
 import Avatar from "@mui/material/Avatar";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
 import { LoginContext } from "../components/ContextProvider";
 import { TbLogout2 } from "react-icons/tb";
 // import ReactTooltip from "react-tooltip";
