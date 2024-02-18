@@ -47,7 +47,7 @@ const Login = () => {
           toast.success("User Authenticated Successfully");
           setTimeout(() => {
             navigate("/layout")
-            window.location.reload();
+            // window.location.reload();
           }, 2000);
         } else {
           console.log(response.data.message);

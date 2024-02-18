@@ -11,6 +11,7 @@ import { TbLogout2 } from "react-icons/tb";
 function Header() {
   const { loginData, setLoginData } = useContext(LoginContext);
 
+  // console.log("loginData",loginData)
   const navigator = useNavigate();
 
 
@@ -37,6 +38,9 @@ function Header() {
   const handleMouseLeave = () => {
     setShowTooltip(false);
   };
+
+ 
+
 
   return (
     <>
@@ -75,7 +79,8 @@ function Header() {
               ) : (
                 <Avatar
                   style={{
-                    background: "blue",
+                    background: "salmon",
+                    marginLeft: "300px",
                     marginTop: "-14px",
                     cursor: "pointer",
                   }}

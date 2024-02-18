@@ -67,15 +67,18 @@ function App() {
   };
 
   useEffect(() => {
+   
     setTimeout(() => {
       DashboardValid();
       setData(true);
-    }, 2000);
+    
+    },100)
 
-    setTimeout(() => {
-      ValidUser();
-    }, 7200000);
-  }, []);
+    // setTimeout(() => {
+    //   ValidUser();
+    // }, 7200000);
+
+  }, [data]);
 
   return (
     <>
