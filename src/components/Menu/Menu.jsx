@@ -24,55 +24,55 @@ const Menu = ({ toggle }) => {
           <div className="nav-items">
             <div className="nav-item">
               <div className="nav-link">
-                <Link to="/home">
+                <Link to="/layout/home">
                   <FaHome />
                   Home
                 </Link>
               </div>
               <div className="nav-link">
-                <Link to="/profProd">
+                <Link to="/layout/profProd">
                   <MdBuild />
                   Profile Production
                 </Link>
               </div>
 
               <div className="nav-link">
-                <Link to="/profQuality">
+                <Link to="/layout/profQuality">
                   <MdBookmarkAdded />
                   Profile Quality
                 </Link>
               </div>
 
               <div className="nav-link">
-                <Link to="/profStore">
+                <Link to="/layout/profStore">
                   <IoStorefrontSharp />
                   Profile Consumption
                 </Link>
               </div>
 
               <div className="nav-link">
-                <Link to="/storeIssue">
+                <Link to="/layout/storeIssue">
                   <AiOutlineIssuesClose />
                   Profile Issue
                 </Link>
               </div>
 
               <div className="nav-link">
-                <Link to="/prodReport">
+                <Link to="/layout/prodReport">
                   <TbReportAnalytics />
                   Production Report
                 </Link>
               </div>
 
               <div className="nav-link">
-                <Link to="/qualityReport">
+                <Link to="/layout/qualityReport">
                   <TbReportAnalytics />
                   Quality Report
                 </Link>
               </div>
 
               <div className="nav-link">
-                <Link to="/storeReport">
+                <Link to="/layout/storeReport">
                   <TbReportAnalytics />
                   Store Report
                 </Link>
@@ -86,47 +86,47 @@ const Menu = ({ toggle }) => {
           <div className="nav-items">
             <div className="nav-item">
               <div className="nav-link">
-                <Link to="/home">
+                <Link to="/layout/home">
                   <FaHome />
                 </Link>
               </div>
               <div className="nav-link">
-                <Link to="/profProd">
+                <Link to="/layout/profProd">
                   <MdBuild />
                 </Link>
               </div>
 
               <div className="nav-link">
-                <Link to="/profQuality">
+                <Link to="/layout/profQuality">
                   <MdBookmarkAdded />
                 </Link>
               </div>
 
               <div className="nav-link">
-                <Link to="/profStore">
+                <Link to="/layout/profStore">
                   <IoStorefrontSharp />
                 </Link>
               </div>
 
               <div className="nav-link">
-                <Link to="prodReport">
+                <Link to="/layout/prodReport">
                   <TbReportAnalytics />
                 </Link>
               </div>
               <div className="nav-link">
-                <Link to="/storeIssue">
+                <Link to="/layout/storeIssue">
                   <AiOutlineIssuesClose />
                 </Link>
               </div>
 
               <div className="nav-link">
-                <Link to="/qualityReport">
+                <Link to="/layout/qualityReport">
                   <TbReportAnalytics />
                 </Link>
               </div>
 
               <div className="nav-link">
-                <Link to="/storeReport">
+                <Link to="/layout/storeReport">
                   <TbReportAnalytics />
                 </Link>
               </div>

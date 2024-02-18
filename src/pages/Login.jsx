@@ -46,9 +46,9 @@ const Login = () => {
           localStorage.setItem("UserInfo", JSON.stringify(response.data.token));
           toast.success("User Authenticated Successfully");
           setTimeout(() => {
-            navigate("/layout");
+            navigate("/layout")
             window.location.reload();
-          }, 2500);
+          }, 2000);
         } else {
           console.log(response.data.message);
         }

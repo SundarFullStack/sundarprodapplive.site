@@ -81,7 +81,7 @@ function Header() {
                   }}
                   aria-controls="simple-menu"
                   aria-haspopup="true"
-                  onClick={handleClick}
+                  // onClick={handleClick}
                 />
               )}
             </div>

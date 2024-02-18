@@ -18,6 +18,8 @@ function App() {
 
   const { loginData, setLoginData } = useContext(LoginContext);
 
+  // console.log("loginData",loginData)
+
   const navigator = useNavigate();
 
   //FUNCTION FOR VALIDATING CURRENT USER AUTHENTICATION FOR EVERY
@@ -80,6 +82,7 @@ function App() {
       {data ? (
         <>
           <Data />
+        
           <Routes>
             <Route path="/" element={<SignUp />} />
             <Route path="/login" element={<Login />} />
@@ -88,9 +91,15 @@ function App() {
               path="/ForgotPassword/PassUpdate/:token"
               element={<FPUpdate />}
             />
+            <Route
+              path="/layout"
+              element={<Layout />}
+            />
+
             <Route path="/error" element={<Error />} />
+            <Route path="/layout/*" element={<Layout />} />
           </Routes>
-          {loginData ? <Layout /> : <></>}
+        
         </>
       ) : (
         <>

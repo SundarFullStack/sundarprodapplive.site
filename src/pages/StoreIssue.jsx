@@ -12,7 +12,19 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 
+    //DateTime Picker styles
 
+    const StyledDatePicker = styled(DateTimePicker)`
+    margin-top: 20px;
+    margin-left: 9px;
+    height: 40px;
+    width: 280px;
+    padding: 10px;
+    background-color: #e8edf1;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  `;
 
 function StoreIssue({ toggle }) {
   // Get Data from DB using Context for Dropdowns
@@ -37,7 +49,7 @@ function StoreIssue({ toggle }) {
   let [selectShift, setselectShift] = useState(undefined);
   let [SelectedConsumeDate, setSelectedConsumeDate] = useState(new Date());
 
-  console.log("selectedId",selectedId)
+  // console.log("selectedId",selectedId)
 
   //Handle Profile Code
 
@@ -174,19 +186,7 @@ function StoreIssue({ toggle }) {
  
   };
 
-    //DateTime Picker styles
 
-  const StyledDatePicker = styled(DateTimePicker)`
-  margin-top: 20px;
-  margin-left: 9px;
-  height: 40px;
-  width: 280px;
-  padding: 10px;
-  background-color: #e8edf1;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-`;
 
   useEffect(() => {
     if (selectedRows.length > 0) {

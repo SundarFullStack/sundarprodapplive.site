@@ -10,6 +10,19 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+  //DateTime Picker styles
+
+  const StyledDatePicker = styled(DateTimePicker)`
+    margin-top: 20px;
+    margin-left: 9px;
+    height: 40px;
+    width: 280px;
+    padding: 10px;
+    background-color: #e8edf1;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  `;
 // PROFSTORE COMPONENT FOR SAVING ALL PROFILE CONSUMPTION DETAILS IN STORE TABLE
 
 function ProfStore({ toggle }) {
@@ -121,19 +134,7 @@ function ProfStore({ toggle }) {
     setSelectedConsumeDate(new Date());
   };
 
-  //DateTime Picker styles
 
-  const StyledDatePicker = styled(DateTimePicker)`
-    margin-top: 20px;
-    margin-left: 9px;
-    height: 40px;
-    width: 280px;
-    padding: 10px;
-    background-color: #e8edf1;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  `;
 
   return (
     <>

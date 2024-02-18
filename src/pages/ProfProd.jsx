@@ -10,6 +10,21 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+  //DATE TIME PICKER STYLES
+
+  const StyledDatePicker = styled(DateTimePicker)`
+    margin-top: 20px;
+    margin-left: 9px;
+    height: 40px;
+    width: 280px;
+    padding: 10px;
+    background-color: #e8edf1;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+ 
+  `;
+  
 // PROFILE PRODUCTION COMPONENT FOR PROVIDING PRODUCTION DETAILS
 
 function ProfProd({ toggle }) {
@@ -138,20 +153,7 @@ function ProfProd({ toggle }) {
     setselectProdQuantity(null);
   };
 
-  //DATE TIME PICKER STYLES
 
-  const StyledDatePicker = styled(DateTimePicker)`
-    margin-top: 20px;
-    margin-left: 9px;
-    height: 40px;
-    width: 280px;
-    padding: 10px;
-    background-color: #e8edf1;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
- 
-  `;
 
   return (
     <>
