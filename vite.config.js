@@ -3,7 +3,8 @@ import react from '@vitejs/plugin-react'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
-  base:"/ProductionApp_Frondend_Repository/"
+  base:"/sundarprodapplive.site/",
+  plugins: [react()]
+  
 
 })
