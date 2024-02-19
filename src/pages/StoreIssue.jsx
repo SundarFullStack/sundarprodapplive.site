@@ -104,13 +104,13 @@ function StoreIssue({ toggle }) {
         !SelectedConsumeDate ||
         !selectShift
       ) {
-        console.log(selectProfileCode,
-          selectProdQuantity,
-          selectLocation,
-          selectPalletNo,
-          selectInCharge,
-          selectShift,
-          SelectedConsumeDate)
+        // console.log(selectProfileCode,
+        //   selectProdQuantity,
+        //   selectLocation,
+        //   selectPalletNo,
+        //   selectInCharge,
+        //   selectShift,
+        //   SelectedConsumeDate)
         alert("Please Ensure to Provide All Fields!!!");
          
       } else {

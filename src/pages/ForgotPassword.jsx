@@ -1,5 +1,4 @@
 import React, { useState,useEffect } from "react";
-import "../styles/Login.css";
 import { Link, useNavigate } from "react-router-dom";
 import { Container, Form, Button } from "react-bootstrap";
 import API_URL from "../../config/global";

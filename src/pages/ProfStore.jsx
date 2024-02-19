@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import "../styles/ProfQuality.css";
 import { IoStorefrontSharp } from "react-icons/io5";
 import { useMyContext } from "../components/ContextProvider";
 import DateTimePicker from "react-datepicker";
