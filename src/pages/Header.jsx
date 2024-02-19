@@ -57,7 +57,7 @@ function Header() {
                 style={{ marginLeft: "30px", marginTop: "-4px" }}
                 className="loginPara"
               >
-                {loginData}
+                {loginData?loginData:"User Name"}
               </p>
               {/* AVATAR INITIAL */}
               {loginData ? (
@@ -67,7 +67,7 @@ function Header() {
                     background: "salmon",
                     marginTop: "-45px",
                     fontWeight: "bold",
-                    marginLeft: "300px",
+                    marginLeft: "470px",
                     textTransform: "capitalize",
                   }}
                   aria-controls="simple-menu"
@@ -80,8 +80,8 @@ function Header() {
                 <Avatar
                   style={{
                     background: "salmon",
-                    marginLeft: "300px",
-                    marginTop: "-14px",
+                    marginLeft: "470px",
+                    marginTop: "-45px",
                     cursor: "pointer",
                   }}
                   aria-controls="simple-menu"

@@ -94,10 +94,6 @@ function App() {
               path="/ForgotPassword/PassUpdate/:token"
               element={<FPUpdate />}
             />
-            <Route
-              path="/layout"
-              element={<Layout />}
-            />
 
             <Route path="/error" element={<Error />} />
             <Route path="/layout/*" element={<Layout />} />
